@@ -31,10 +31,21 @@ RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
 RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 WORKDIR /home/adv
 USER adv
+
+#
+RUN git clone https://github.com/ADVANTECH-Corp/APIGateway.git /home/adv/api_gw
+#
+RUN rm -rf /usr/share/webmin/advan_wsn_setting
+RUN mkdir -p /usr/share/webmin/advan_wsn_setting
+RUN chmod a+rwx -R /usr/share/webmin/advan_wsn_setting
+RUN chmod a+rw /etc/webmin/webmin.acl
+RUN echo "root: advan_wsn_setting" >> /etc/webmin/webmin.acl
+RUN cp -Rf /home/adv/api_gw/apps/wsn_manage/wsn_setting/* /usr/share/webmin/advan_wsn_setting/
+
 #ENV LC_ALL en_US.UTF-8
 #webmin use port 10000
 EXPOSE 10000
 
 #VOLUME ["/etc/webmin"]
 
-#CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
+CMD /usr/bin/touch /var/webmin/miniserv.log && /etc/init.d/webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
