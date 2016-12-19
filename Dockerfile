@@ -1,7 +1,6 @@
 FROM ubuntu:16.04
 MAINTAINER bouroo <bouroo@gmail.com>
 
-
 # Change root password
 RUN echo root:pass | chpasswd
 RUN echo "Acquire::GzipIndexes \"false\"; Acquire::CompressionTypes::Order:: \"gz\";" >/etc/apt/apt.conf.d/docker-gzip-indexes
@@ -25,10 +24,4 @@ EXPOSE 10000
 
 VOLUME ["/etc/webmin"]
 
-# adv account
-RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
-# set up adv as sudo
-RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-WORKDIR /home/adv
-USER adv
-#CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
+CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
