@@ -15,7 +15,7 @@ RUN wget http://www.webmin.com/jcameron-key.asc
 RUN apt-key add jcameron-key.asc
 #
 RUN apt-get update
-RUN sudo apt-get install -y webmin
+RUN apt-get install webmin
 RUN ufw allow 10000
 
 EXPOSE 10000
