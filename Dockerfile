@@ -14,6 +14,7 @@ RUN cd /root
 RUN wget http://www.webmin.com/jcameron-key.asc
 RUN apt-key add jcameron-key.asc
 #
+RUN apt-get update
 RUN apt-get install -y webmin
 RUN ufw allow 10000
 
