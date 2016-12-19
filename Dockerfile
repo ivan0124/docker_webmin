@@ -18,7 +18,7 @@ RUN echo "deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge 
 # Update OS
 RUN apt-get update
 # Install webmin
-#RUN apt-get install -y webmin
+RUN apt-get install -y webmin
 
 
 #ENV LC_ALL en_US.UTF-8
