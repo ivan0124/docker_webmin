@@ -38,6 +38,7 @@ RUN cp -Rf /home/adv/api_gw/apps/wsn_manage/wsn_setting/* /usr/share/webmin/adva
 
 #ENV LC_ALL en_US.UTF-8
 #webmin use port 10000
+/usr/sbin/ufw allow 10000
 EXPOSE 10000
 
 #VOLUME ["/etc/webmin"]
