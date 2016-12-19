@@ -25,3 +25,4 @@ EXPOSE 10000
 VOLUME ["/etc/webmin"]
 
 #CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
+CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/bin/tail -f /var/webmin/miniserv.log
