@@ -42,11 +42,11 @@ EXPOSE 10000
 
 #VOLUME ["/etc/webmin"]
 
-CMD /usr/bin/touch /var/webmin/miniserv.log && /etc/init.d/webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
+CMD /etc/init.d/webmin restart
 
-# adv account
-RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
-# set up adv as sudo
-RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-WORKDIR /home/adv
-USER adv
+## adv account
+#RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
+## set up adv as sudo
+#RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+#WORKDIR /home/adv
+#USER adv
