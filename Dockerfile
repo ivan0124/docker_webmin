@@ -15,10 +15,8 @@ RUN echo "deb http://download.webmin.com/download/repository sarge contrib" >> /
 # Update OS
 RUN apt-get update && apt-get dist-upgrade -y
 # Install webmin and clean file
-RUN apt-get install -y webmin && apt-get autoclean
+RUN apt-get install -y webmin
 
-
-ENV LC_ALL en_US.UTF-8
 
 EXPOSE 10000
 
