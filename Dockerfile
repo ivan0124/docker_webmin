@@ -1,8 +1,6 @@
 FROM ubuntu:16.04
-#MAINTAINER Advantech
+MAINTAINER bouroo <bouroo@gmail.com>
 
-# adv account
-RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
 # Change root password
 RUN echo root:pass | chpasswd
 RUN echo "Acquire::GzipIndexes \"false\"; Acquire::CompressionTypes::Order:: \"gz\";" >/etc/apt/apt.conf.d/docker-gzip-indexes
@@ -19,15 +17,11 @@ RUN apt-get update && apt-get dist-upgrade -y
 # Install webmin and clean file
 RUN apt-get install -y webmin && apt-get autoclean
 
+
 ENV LC_ALL en_US.UTF-8
 
 EXPOSE 10000
 
 VOLUME ["/etc/webmin"]
 
-#CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
-CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/bin/tail -f /var/webmin/miniserv.log
-# set up adv as sudo
-RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-WORKDIR /home/adv
-USER adv
+CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
