@@ -16,8 +16,11 @@ RUN cd /root
 RUN wget http://www.webmin.com/jcameron-key.asc && apt-key add jcameron-key.asc
 # Update OS
 RUN apt-get update
-RUN apt-get install -y apt-transport-https
+RUN apt-get purge apt-show-versions
+RUN rm /var/lib/apt/lists/*gz
+RUN apt-get -o Acquire::GzipIndexes=false update
 RUN apt-get install -y apt-show-versions
+RUN apt-get install -y apt-transport-https
 # Install webmin
 RUN apt-get install -y webmin
 
