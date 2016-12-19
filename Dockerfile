@@ -20,7 +20,7 @@ RUN apt-get install -y webmin && apt-get autoclean
 
 ENV LC_ALL en_US.UTF-8
 
-EXPOSE 10000
+EXPOSE 10001
 
 VOLUME ["/etc/webmin"]
 
