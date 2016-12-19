@@ -25,7 +25,12 @@ RUN apt-get install -y apt-transport-https
 # Install webmin
 RUN apt-get install -y webmin
 
-
+# adv account
+RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
+# set up adv as sudo
+RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+WORKDIR /home/adv
+USER adv
 #ENV LC_ALL en_US.UTF-8
 
 EXPOSE 10000
