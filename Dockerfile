@@ -8,13 +8,12 @@ RUN echo root:pass | chpasswd
 RUN apt-get update && apt-get install -y wget locales nano ntpdate
 # Add locale
 #RUN locale-gen en_US.UTF-8 && locale-gen th_TH.UTF-8 && dpkg-reconfigure locales
+# Add webmin repository
+RUN echo "deb http://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
+RUN echo "deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib" >> /etc/apt/sources.list
 # Add webmin repository key
 RUN cd /root
 RUN wget http://www.webmin.com/jcameron-key.asc && apt-key add jcameron-key.asc
-# Add webmin repository
-#RUN echo "deb http://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
-RUN echo "deb http://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
-RUN echo "deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib" >> /etc/apt/sources.list
 # Update OS
 RUN apt-get update
 RUN apt-get install -y apt-transport-https
