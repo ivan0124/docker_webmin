@@ -3,6 +3,7 @@ FROM ubuntu:16.04
 
 # Change root password
 RUN echo root:pass | chpasswd
+RUN apt-get -o Acquire::GzipIndexes=false update
 #RUN echo "Acquire::GzipIndexes \"false\"; Acquire::CompressionTypes::Order:: \"gz\";" >/etc/apt/apt.conf.d/docker-gzip-indexes
 # Add some package
 RUN apt-get update && apt-get install -y wget locales nano ntpdate
@@ -17,8 +18,8 @@ RUN wget http://www.webmin.com/jcameron-key.asc && apt-key add jcameron-key.asc
 # Update OS
 RUN apt-get update
 RUN apt-get purge apt-show-versions
-RUN rm /var/lib/apt/lists/*gz
-RUN apt-get -o Acquire::GzipIndexes=false update
+#RUN rm /var/lib/apt/lists/*gz
+#RUN apt-get -o Acquire::GzipIndexes=false update
 RUN apt-get install -y apt-show-versions
 RUN apt-get install -y apt-transport-https
 # Install webmin
