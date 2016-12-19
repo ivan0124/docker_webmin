@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER bouroo <bouroo@gmail.com>
+#MAINTAINER Advantech
 
 # Change root password
 RUN echo root:pass | chpasswd
@@ -24,4 +24,10 @@ EXPOSE 10000
 
 VOLUME ["/etc/webmin"]
 
-CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
+#CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
+CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/bin/tail -f /var/webmin/miniserv.log
+
+# set up adv as sudo
+RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+WORKDIR /home/adv
+USER adv
