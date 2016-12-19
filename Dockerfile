@@ -42,7 +42,7 @@ EXPOSE 10000
 
 #VOLUME ["/etc/webmin"]
 
-CMD /etc/init.d/webmin restart
+CMD /usr/sbin/service webmin restart
 
 ## adv account
 #RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
