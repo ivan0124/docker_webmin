@@ -17,6 +17,10 @@ RUN apt-get update && apt-get dist-upgrade -y
 # Install webmin and clean file
 RUN apt-get install -y webmin && apt-get autoclean
 
+# set up adv as sudo
+RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+WORKDIR /home/adv
+USER adv
 
 ENV LC_ALL en_US.UTF-8
 
