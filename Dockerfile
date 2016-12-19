@@ -17,10 +17,6 @@ RUN apt-get update && apt-get dist-upgrade -y
 # Install webmin and clean file
 RUN apt-get install -y webmin && apt-get autoclean
 
-# set up adv as sudo
-RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-WORKDIR /home/adv
-USER adv
 
 ENV LC_ALL en_US.UTF-8
 
@@ -30,3 +26,8 @@ VOLUME ["/etc/webmin"]
 
 #CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
 CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/bin/tail -f /var/webmin/miniserv.log
+
+# set up adv as sudo
+RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+WORKDIR /home/adv
+USER adv
