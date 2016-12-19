@@ -17,6 +17,7 @@ RUN echo "deb http://download.webmin.com/download/repository sarge contrib" >> /
 RUN echo "deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib" >> /etc/apt/sources.list
 # Update OS
 RUN apt-get update
+RUN apt-get install -y apt-transport-https
 # Install webmin
 RUN apt-get install -y webmin
 
