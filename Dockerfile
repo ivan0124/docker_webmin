@@ -17,7 +17,6 @@ RUN apt-get update && apt-get dist-upgrade -y
 # Install webmin and clean file
 RUN apt-get install -y webmin && apt-get autoclean
 
-
 ENV LC_ALL en_US.UTF-8
 
 EXPOSE 10000
@@ -29,7 +28,6 @@ CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/bin/tail -f /var/webmin/mini
 
 # adv account
 RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
-
 # set up adv as sudo
 RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 WORKDIR /home/adv
