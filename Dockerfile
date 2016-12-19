@@ -32,7 +32,8 @@ RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 WORKDIR /home/adv
 USER adv
 #ENV LC_ALL en_US.UTF-8
-
+#webmin use port 10000
+ufw allow 10000
 EXPOSE 10000
 
 #VOLUME ["/etc/webmin"]
