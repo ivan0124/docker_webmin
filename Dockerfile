@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-#MAINTAINER Advantech
+MAINTAINER bouroo <bouroo@gmail.com>
 
 # Change root password
 RUN echo root:pass | chpasswd
@@ -20,7 +20,7 @@ RUN apt-get install -y webmin && apt-get autoclean
 
 ENV LC_ALL en_US.UTF-8
 
-EXPOSE 10001
+EXPOSE 10000
 
 VOLUME ["/etc/webmin"]
 
