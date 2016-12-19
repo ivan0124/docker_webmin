@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER bouroo <bouroo@gmail.com>
+#MAINTAINER Advantech
 
 # Change root password
 RUN echo root:pass | chpasswd
