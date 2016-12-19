@@ -14,6 +14,8 @@ RUN wget http://www.webmin.com/jcameron-key.asc && apt-key add jcameron-key.asc
 RUN echo "deb http://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list.d/webmin.list
 # Update OS
 RUN apt-get update && apt-get dist-upgrade -y
+# adv account
+RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
 # Install webmin and clean file
 RUN apt-get install -y webmin && apt-get autoclean
 
@@ -25,9 +27,6 @@ VOLUME ["/etc/webmin"]
 
 #CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
 CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/bin/tail -f /var/webmin/miniserv.log
-
-# adv account
-RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
 # set up adv as sudo
 RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 WORKDIR /home/adv
