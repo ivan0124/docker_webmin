@@ -22,6 +22,7 @@ RUN apt-get purge apt-show-versions
 #RUN apt-get -o Acquire::GzipIndexes=false update
 RUN apt-get install -y apt-show-versions
 RUN apt-get install -y apt-transport-https
+RUN apt-get install -y sudo git
 # Install webmin
 RUN apt-get install -y webmin
 
