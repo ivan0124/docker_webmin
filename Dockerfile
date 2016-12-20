@@ -41,7 +41,7 @@ ENV LC_ALL en_US.UTF-8
 #webmin use port 10000
 EXPOSE 10000
 
-VOLUME ["/etc/webmin"]
+#VOLUME ["/etc/webmin"]
 VOLUME ["/usr/share/webmin/advan_wsn_setting"]
 
 CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
