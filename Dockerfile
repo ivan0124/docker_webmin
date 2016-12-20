@@ -30,7 +30,7 @@ RUN apt-get install -y webmin && apt-get autoclean
 #RUN git clone https://github.com/ADVANTECH-Corp/APIGateway.git /home/adv/api_gw
 ##
 #RUN rm -rf /usr/share/webmin/advan_wsn_setting
-#RUN mkdir -p /usr/share/webmin/advan_wsn_setting
+RUN mkdir -p /usr/share/webmin/advan_wsn_setting
 #RUN chmod a+rwx -R /usr/share/webmin/advan_wsn_setting
 #RUN chmod a+rw /etc/webmin/webmin.acl
 #RUN echo "root: advan_wsn_setting" >> /etc/webmin/webmin.acl
@@ -42,6 +42,7 @@ ENV LC_ALL en_US.UTF-8
 EXPOSE 10000
 
 VOLUME ["/etc/webmin"]
+VOLUME ["/usr/share/webmin/advan_wsn_setting"]
 
 CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
 
