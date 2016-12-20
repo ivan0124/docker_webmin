@@ -45,7 +45,7 @@ EXPOSE 10000
 #VOLUME ["/etc/webmin"]
 VOLUME ["/usr/share/webmin/advan_wsn_setting"]
 
-CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
+#CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
 
 ## adv account
 #RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
