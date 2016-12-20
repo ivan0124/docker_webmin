@@ -51,5 +51,5 @@ CMD /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart 
 #RUN useradd -m -k /home/adv adv -p adv -s /bin/bash -G sudo
 ## set up adv as sudo
 #RUN echo "adv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-#WORKDIR /home/adv
+WORKDIR /home/adv
 #USER adv
