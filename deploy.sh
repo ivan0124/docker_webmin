@@ -55,5 +55,5 @@ echo "[Step5]: Run container images......>>>"
 echo "======================================="
 #sudo docker run --network=$ADVANTECH_NET -itd --name $MQTT_CONTAINER -p 1883:1883 $MQTT_IMAGE
 #sudo docker run --network=$ADVANTECH_NET -it --name $DOCKER_API_GW_CONTAINER $DOCKER_API_GW_IMAGE
-sudo docker run --network=$ADVANTECH_NET -it --name $DOCKER_API_GW_CONTAINER -p 10000:10000 $DOCKER_API_GW_IMAGE
+sudo docker run --network=$ADVANTECH_NET -it --name $DOCKER_API_GW_CONTAINER -v $PWD/advan_wsn_setting:/usr/share/webmin/advan_wsn_setting:rw -p 10000:10000 $DOCKER_API_GW_IMAGE
 
